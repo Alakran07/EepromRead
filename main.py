@@ -17,7 +17,7 @@ def product_selector(product):
 def start_firmware_process(product,target_file,new_version):
     field_name = 'FW VERSION'
     #print(product_info[product])
-    fw_ver = product_info[product]['FW VERSION']
+    fw_ver = product_info[product][field_name]
     print("--- Phase 1: Validating EEPROM Structure ---")
     # Check if FW VERSION field exists
     if not reader.read_prom(target_file, field_name):
