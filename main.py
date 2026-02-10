@@ -21,8 +21,8 @@ def start_firmware_process(product,target_file,new_version):
     print("--- Phase 1: Validating EEPROM Structure ---")
     # Check if FW VERSION field exists
     if not reader.read_prom(target_file, field_name):
-        print("Field missing. Adding FW VERSION field...")
-        reader.add_fw_ver(target_file, fw_ver)  # Default start version
+        print("Field missing. Adding {} field...".format(field_name))
+        reader.add_fw_ver(target_file, field_name, fw_ver)  # Default start version
     else:
         print("EEPROM structure is valid.")
 

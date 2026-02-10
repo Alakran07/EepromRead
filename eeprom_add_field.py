@@ -11,10 +11,10 @@ def read_prom (filename, field_name):
         for line in f:
             print(line)
             if field_name in line:
-                print("FW VERSION: FIELD EXIST")
+                print("{}: FIELD EXIST".format(field_name))
                 found = True
                 return found
-    print("FW VERSION: FIELD DOES NOT EXIST TO BE ADDED")
+    print("{}: FIELD DOES NOT EXIST TO BE ADDED".format(field_name))
     return found
 
 def write_prom (filename, data):
@@ -22,7 +22,7 @@ def write_prom (filename, data):
     with open(filename, 'a') as f:
         f.write(data)
 
-def add_fw_ver(file_name_eeprom,file_value):
-    new_value = "FW VERSION:" + file_value
+def add_fw_ver(file_name_eeprom,field_name,file_value):
+    new_value = field_name + ":" + file_value
     write_prom(file_name_eeprom,new_value)
 
